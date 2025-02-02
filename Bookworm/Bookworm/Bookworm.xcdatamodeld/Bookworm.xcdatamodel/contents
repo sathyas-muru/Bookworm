@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23A344" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="SavedCurrentBook" representedClassName="SavedCurrentBook" syncable="YES" codeGenerationType="class">
+        <attribute name="cover" optional="YES" attributeType="Binary"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="journal" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SavedJournal" inverseName="book" inverseEntity="SavedJournal"/>
+    </entity>
+    <entity name="SavedDoneBook" representedClassName="SavedDoneBook" syncable="YES" codeGenerationType="class">
+        <attribute name="cover" optional="YES" attributeType="Binary"/>
+        <attribute name="doneDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="journal" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SavedJournal" inverseName="doneBook" inverseEntity="SavedJournal"/>
+    </entity>
+    <entity name="SavedEvents" representedClassName="SavedEvents" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="note" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="SavedGoals" representedClassName="SavedGoals" syncable="YES" codeGenerationType="class">
+        <attribute name="checked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="content" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="SavedJournal" representedClassName="SavedJournal" syncable="YES" codeGenerationType="class">
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SavedCurrentBook" inverseName="journal" inverseEntity="SavedCurrentBook"/>
+        <relationship name="doneBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SavedDoneBook" inverseName="journal" inverseEntity="SavedDoneBook"/>
+    </entity>
+    <entity name="SavedTBR" representedClassName="SavedTBR" syncable="YES" codeGenerationType="class">
+        <attribute name="cover" optional="YES" attributeType="Binary"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+</model>
